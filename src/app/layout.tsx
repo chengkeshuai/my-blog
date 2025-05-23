@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../../components/Header";
 import { siteConfig } from "../../config/site";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -40,6 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning style={{ backgroundColor: '#272934' }}>
+      <head>
+        <GoogleAnalytics gaId={siteConfig.analytics.googleAnalyticsId} />
+      </head>
       <body
         className="antialiased min-h-screen transition-colors"
         style={{ backgroundColor: '#272934', color: '#ffffff' }}

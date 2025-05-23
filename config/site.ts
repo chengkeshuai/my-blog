@@ -214,7 +214,7 @@ export const siteConfig = {
 
   // Google Analytics
   analytics: {
-    googleAnalyticsId: "G-XXXXXXXXXX"
+    googleAnalyticsId: "G-RPDB2F2F7N"
   }
 }
 
