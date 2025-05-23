@@ -63,7 +63,7 @@ export default async function Home() {
       {/* Product Recommendations */}
       <section className="max-w-3xl mx-auto mb-16">
         <div className="bg-yellow-50 border-l-4 border-yellow-600 rounded-lg p-8">
-          <h2 className="text-xl font-bold mb-6 text-gray-900">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">
             🚀 我的产品推荐:
           </h2>
           <div className="space-y-6">
@@ -71,12 +71,12 @@ export default async function Home() {
               <div key={index}>
                 <Link 
                   href={product.url} 
-                  className="text-blue-600 hover:underline font-medium text-base"
+                  className="text-blue-600 hover:underline font-medium text-lg"
                   target="_blank"
                 >
                   {product.name}
                 </Link>
-                <span className="text-gray-700 text-base"> - {product.description}</span>
+                <span className="text-gray-700 text-lg"> - {product.description}</span>
               </div>
             ))}
           </div>

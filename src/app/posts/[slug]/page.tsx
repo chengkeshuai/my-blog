@@ -209,8 +209,8 @@ export default function PostPage({ params }: PostPageProps) {
               </div>
             </div>
 
-            {/* 评论区占位 */}
-            <div className="bg-gray-800 rounded-lg p-6">
+            {/* 评论区 */}
+            <div className="border border-gray-700/50 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4 text-white">评论</h3>
               <GiscusComments slug={post.slug} />
             </div>

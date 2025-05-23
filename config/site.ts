@@ -1,8 +1,8 @@
 // 内容配置数据
 const contentData = {
   "site": {
-    "name": "坤晟",
-    "title": "坤晟的博客 - AI编程独立开发者",
+    "name": "坤晟AI出海",
+    "title": "坤晟AI出海 - AI编程独立开发者",
     "subtitle": "独立开发者",
     "description": "AI 出海实战派 / 最懂新手的 AI 导师。致力于将复杂的 AI 技术转化为易于理解和实践的商业解决方案，坚持出海赛道，拥抱长期主义。",
     "keywords": ["AI出海", "独立开发", "实战教程", "SEO", "AI导师"],
@@ -66,9 +66,9 @@ const contentData = {
   "footer": {
     "sections": [
       {
-        "title": "坤晟博客",
+        "title": "坤晟AI出海",
         "links": [
-          { "name": "坤晟的博客", "href": "/" },
+          { "name": "坤晟AI出海", "href": "/" },
           { "name": "文章列表", "href": "/posts" },
           { "name": "联系我", "href": "/contact" },
           { "name": "关于我", "href": "/about" }
@@ -98,7 +98,7 @@ const contentData = {
         ]
       }
     ],
-    "copyright": "©2025 坤晟 All rights reserved.",
+    "copyright": "©2025 坤晟AI出海 All rights reserved.",
     "icp": ""
   },
   "card": {
