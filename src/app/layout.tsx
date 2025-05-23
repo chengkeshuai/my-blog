@@ -41,13 +41,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning style={{ backgroundColor: '#272934' }}>
-      <head>
-        <GoogleAnalytics gaId={siteConfig.analytics.googleAnalyticsId} />
-      </head>
       <body
         className="antialiased min-h-screen transition-colors"
         style={{ backgroundColor: '#272934', color: '#ffffff' }}
       >
+        <GoogleAnalytics gaId={siteConfig.analytics.googleAnalyticsId} />
         <div className="relative flex min-h-screen flex-col" style={{ backgroundColor: '#272934' }}>
           <Header />
           <main className="flex-1">{children}</main>

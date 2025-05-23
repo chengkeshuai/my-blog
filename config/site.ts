@@ -6,7 +6,7 @@ const contentData = {
     "subtitle": "独立开发者",
     "description": "AI 出海实战派 / 最懂新手的 AI 导师。致力于将复杂的 AI 技术转化为易于理解和实践的商业解决方案，坚持出海赛道，拥抱长期主义。",
     "keywords": ["AI出海", "独立开发", "实战教程", "SEO", "AI导师"],
-    "url": "https://your-domain.com"
+    "url": "https://www.kuncheng.org"
   },
   "personal": {
     "name": "坤晟",
@@ -214,7 +214,7 @@ export const siteConfig = {
 
   // Google Analytics
   analytics: {
-    googleAnalyticsId: "G-RPDB2F2F7N"
+    googleAnalyticsId: "G-H2PTHNGNNV"
   }
 }
 
