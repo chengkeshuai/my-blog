@@ -1,0 +1,84 @@
+---
+title: "如何在博客中添加新文章"
+date: "2025-05-23"
+description: "详细介绍如何在这个技术博客中添加新的文章，包括文件格式、元数据设置等。"
+category: "实战教程"
+tags: ["博客", "教程", "MDX"]
+published: true
+---
+
+## 简介
+
+这篇文章将教你如何在这个博客系统中添加新的文章。
+
+## 步骤详解
+
+### 1. 创建文章文件
+
+在 `content` 目录下创建新的 `.mdx` 文件：
+
+```bash
+# 文件名示例
+content/
+├── my-first-article.mdx
+├── ai-development-guide.mdx
+└── react-tips-and-tricks.mdx
+```
+
+### 2. 添加元数据
+
+每篇文章顶部必须包含以下信息：
+
+```yaml
+---
+title: "你的文章标题"
+date: "2025-05-23"
+description: "文章简介"
+category: "分类名"
+tags: ["标签1", "标签2"]
+published: true
+---
+```
+
+### 3. 编写内容
+
+使用 Markdown 语法编写内容：
+
+```markdown
+## 标题
+
+这是正文内容...
+
+### 代码示例
+
+\```javascript
+console.log('Hello World!')
+\```
+
+### 列表
+
+- 项目1
+- 项目2
+- 项目3
+```
+
+## 可用的分类
+
+根据博客定位，建议使用以下分类：
+
+- **AI出海** - AI产品国际化相关
+- **AI建站** - 使用AI工具建站
+- **独立开发** - 独立开发经验分享
+- **实战教程** - 技术教程和指南
+
+## 发布文章
+
+1. 确保 `published: true`
+2. 保存文件
+3. 重启开发服务器查看效果
+
+```bash
+npm run dev
+```
+
+文章会自动出现在文章列表页面！ 
