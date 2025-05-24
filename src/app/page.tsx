@@ -69,15 +69,15 @@ export default async function Home() {
           <div className="space-y-6">
             {siteConfig.products.map((product, index) => (
               <div key={index}>
-                <Link 
+              <Link 
                   href={product.url} 
                   className="text-blue-600 hover:underline font-medium text-lg"
-                  target="_blank"
-                >
+                target="_blank"
+              >
                   {product.name}
-                </Link>
+              </Link>
                 <span className="text-gray-700 text-lg"> - {product.description}</span>
-              </div>
+            </div>
             ))}
           </div>
         </div>
@@ -141,19 +141,19 @@ export default async function Home() {
             
             <div className="flex justify-center gap-3">
               {siteConfig.card.buttons.map((button, index) => (
-                <a
+              <a
                   key={index}
                   href={button.href}
-                  className="relative inline-block"
+                className="relative inline-block"
                   target="_blank"
                   rel="noopener noreferrer"
-                >
-                  <div className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-lg p-0.5">
-                    <div className="bg-gray-900 rounded-lg px-4 py-2 text-white text-base whitespace-nowrap hover:bg-gray-800 transition-colors">
+              >
+                <div className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-lg p-0.5">
+                  <div className="bg-gray-900 rounded-lg px-4 py-2 text-white text-base whitespace-nowrap hover:bg-gray-800 transition-colors">
                       {button.text}
-                    </div>
                   </div>
-                </a>
+                </div>
+              </a>
               ))}
             </div>
           </div>
@@ -167,7 +167,7 @@ export default async function Home() {
             {siteConfig.footer.sections.map((section, index) => (
               <div key={index}>
                 <h4 className="font-semibold mb-4 text-white border-b border-gray-600 pb-2 text-lg">{section.title}</h4>
-                <ul className="space-y-3">
+              <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <Link href={link.href} className="text-gray-400 hover:text-white transition-colors text-base">
@@ -175,8 +175,8 @@ export default async function Home() {
                       </Link>
                     </li>
                   ))}
-                </ul>
-              </div>
+              </ul>
+            </div>
             ))}
           </div>
           

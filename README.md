@@ -1,10 +1,10 @@
-# J实验室 - 技术博客
+# 坤晟AI出海 - AI编程独立开发者
 
 一个基于 Next.js 14 构建的现代技术博客，专注于 AI 出海、AI 建站、Google AdSense 等技术内容分享。
 
 ## 🚀 项目特点
 
-- **现代化设计**：参考 [weijunext.com](https://weijunext.com) 的简洁设计风格
+- **现代化设计**：暗黑主题，个性化配色，合理的布局
 - **响应式布局**：完美适配桌面端和移动端
 - **MDX 支持**：支持 Markdown 扩展语法和 React 组件
 - **SEO 优化**：完整的 meta 标签和 OpenGraph 支持
@@ -182,4 +182,4 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 ---
 
-**J实验室** - 全栈工程师，Next.js开源手艺人，撸金签约作者，折腾才有未来
+**坤晟AI出海** - AI 出海实战派 / 最懂 AI 新手的 AI 导师
