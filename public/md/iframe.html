@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微信 Markdown 编辑器-坤晟</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .header {
+      background-color: #f8f9fa;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e1e4e8;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+      color: #24292e;
+    }
+    
+    .header a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    
+    .header a:hover {
+      text-decoration: underline;
+    }
+    
+    .iframe-container {
+      width: 100%;
+      height: calc(100% - 50px);
+    }
+    
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border-left-color: #09f;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .backup-links {
+      margin-top: 20px;
+    }
+    
+    .backup-links a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 8px 16px;
+      background-color: #0366d6;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    
+    .backup-links a:hover {
+      background-color: #0257ba;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>微信 Markdown 编辑器-坤晟</h1>
+    <a href="https://kuncheng.org" target="_blank">返回博客</a>
+  </div>
+  
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>正在加载编辑器，请稍候...</p>
+    <p id="loading-message"></p>
+    <div class="backup-links">
+      <a href="./simple.html">使用简易版编辑器</a>
+      <a href="./index.html">使用本地版编辑器</a>
+    </div>
+  </div>
+  
+  <div class="iframe-container">
+    <iframe id="md-iframe" src="https://md.doocs.com/" allowfullscreen></iframe>
+  </div>
+  
+  <script>
+    const iframe = document.getElementById('md-iframe');
+    const loading = document.getElementById('loading');
+    const loadingMessage = document.getElementById('loading-message');
+    let loadingTime = 0;
+    
+    // 加载计时
+    const timer = setInterval(() => {
+      loadingTime++;
+      loadingMessage.textContent = `已加载 ${loadingTime} 秒...`;
+      
+      // 如果超过30秒还没加载完，提示用户
+      if (loadingTime >= 30) {
+        loadingMessage.innerHTML = '<strong style="color: #f44336;">加载时间较长，您可以选择使用备选编辑器</strong>';
+      }
+    }, 1000);
+    
+    // 监听iframe加载完成
+    iframe.onload = function() {
+      clearInterval(timer);
+      loading.style.display = 'none';
+    };
+    
+    // 如果iframe加载失败
+    iframe.onerror = function() {
+      clearInterval(timer);
+      loadingMessage.innerHTML = '<strong style="color: #f44336;">加载失败，请选择备选编辑器</strong>';
+    };
+  </script>
+</body>
+</html> 

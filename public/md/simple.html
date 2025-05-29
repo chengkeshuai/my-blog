@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简易 Markdown 编辑器-坤晟</title>
+  <style>
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+    .header {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    .editor, .preview {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    .editor {
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+    }
+    .preview {
+      background-color: #fff;
+    }
+    textarea {
+      width: 100%;
+      height: 100%;
+      border: none;
+      resize: none;
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      outline: none;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      padding-left: 10px;
+      margin-left: 0;
+      color: #666;
+    }
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 3px;
+      overflow-x: auto;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .toolbar {
+      display: flex;
+      background-color: #f0f0f0;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+    .toolbar button {
+      margin-right: 5px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .toolbar button:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>简易 Markdown 编辑器-坤晟</h1>
+    <div>
+      <button id="copyHtml">复制HTML</button>
+      <button id="copyMarkdown">复制Markdown</button>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button data-action="bold">加粗</button>
+    <button data-action="italic">斜体</button>
+    <button data-action="heading">标题</button>
+    <button data-action="link">链接</button>
+    <button data-action="image">图片</button>
+    <button data-action="list">列表</button>
+    <button data-action="code">代码</button>
+    <button data-action="quote">引用</button>
+  </div>
+  <div class="container">
+    <div class="editor">
+      <textarea id="markdown-input" placeholder="在这里输入Markdown文本...">
+# 欢迎使用 Markdown 编辑器
+
+这是一个简单的 **Markdown** 编辑器。
+
+## 功能
+
+- 实时预览
+- 支持常用 Markdown 语法
+- 轻量级
+
+> Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。
+> 它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的HTML文档。
+
+```javascript
+function hello() {
+  console.log("Hello, Markdown!");
+}
+```
+
+[访问坤晟博客](https://kuncheng.org)
+
+![Markdown Logo](https://markdown-here.com/img/icon256.png)
+      </textarea>
+    </div>
+    <div class="preview" id="preview"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const textarea = document.getElementById('markdown-input');
+    const preview = document.getElementById('preview');
+    
+    // 设置marked选项，启用GFM (GitHub Flavored Markdown)
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+      headerIds: true,
+      highlight: function (code, lang) {
+        return code;
+      }
+    });
+    
+    // 实时预览功能
+    function updatePreview() {
+      preview.innerHTML = marked.parse(textarea.value);
+    }
+    
+    // 初始化预览
+    updatePreview();
+    
+    // 监听输入变化
+    textarea.addEventListener('input', updatePreview);
+    
+    // 工具栏功能
+    document.querySelectorAll('.toolbar button').forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.getAttribute('data-action');
+        let startText = '';
+        let endText = '';
+        let placeholderText = '';
+        
+        switch (action) {
+          case 'bold':
+            startText = '**';
+            endText = '**';
+            placeholderText = '加粗文本';
+            break;
+          case 'italic':
+            startText = '*';
+            endText = '*';
+            placeholderText = '斜体文本';
+            break;
+          case 'heading':
+            startText = '## ';
+            endText = '';
+            placeholderText = '标题';
+            break;
+          case 'link':
+            startText = '[';
+            endText = '](https://example.com)';
+            placeholderText = '链接文本';
+            break;
+          case 'image':
+            startText = '![';
+            endText = '](https://example.com/image.jpg)';
+            placeholderText = '图片描述';
+            break;
+          case 'list':
+            startText = '- ';
+            endText = '\n- 列表项2\n- 列表项3';
+            placeholderText = '列表项1';
+            break;
+          case 'code':
+            startText = '```\n';
+            endText = '\n```';
+            placeholderText = '代码块';
+            break;
+          case 'quote':
+            startText = '> ';
+            endText = '';
+            placeholderText = '引用文本';
+            break;
+        }
+        
+        insertTextAtCursor(startText, endText, placeholderText);
+      });
+    });
+    
+    // 在光标位置插入文本
+    function insertTextAtCursor(startText, endText, placeholderText) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selectedText = textarea.value.substring(start, end);
+      const replacement = startText + (selectedText || placeholderText) + endText;
+      
+      textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+      textarea.focus();
+      
+      // 选中占位符文本
+      if (!selectedText) {
+        const placeholderStart = start + startText.length;
+        textarea.setSelectionRange(placeholderStart, placeholderStart + placeholderText.length);
+      } else {
+        textarea.setSelectionRange(start + startText.length, start + startText.length + selectedText.length);
+      }
+      
+      // 更新预览
+      updatePreview();
+    }
+    
+    // 复制HTML
+    document.getElementById('copyHtml').addEventListener('click', () => {
+      const htmlContent = preview.innerHTML;
+      copyToClipboard(htmlContent);
+      alert('已复制HTML到剪贴板');
+    });
+    
+    // 复制Markdown
+    document.getElementById('copyMarkdown').addEventListener('click', () => {
+      copyToClipboard(textarea.value);
+      alert('已复制Markdown到剪贴板');
+    });
+    
+    // 复制到剪贴板
+    function copyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+  </script>
+</body>
+</html> 

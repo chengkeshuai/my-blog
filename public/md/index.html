@@ -73,6 +73,37 @@ gtag('config', 'G-7NZL3PZ0NK');
           content: '...';
         }
       }
+
+      .loading-timeout {
+        display: none;
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .loading-timeout.show {
+        display: block;
+      }
+
+      .loading-timeout a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4285f4;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .loading-timeout a:hover {
+        background-color: #3367d6;
+      }
+
+      #loading-counter {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #666;
+      }
     </style>
     <script type="module" crossorigin src="./static/js/md-index-yLhhJ9-2.js"></script>
     <link rel="stylesheet" crossorigin href="./static/css/md-index-C45GrMy4.css">
@@ -86,6 +117,12 @@ gtag('config', 'G-7NZL3PZ0NK');
       <div class="loading">
         <strong>致力于让 Markdown 编辑更简单</strong>
         <p class="txt">正在加载编辑器</p>
+        <div id="loading-counter">0秒...</div>
+        <div id="loading-timeout" class="loading-timeout">
+          <p>编辑器加载时间过长，可能是因为资源文件较大。</p>
+          <p>您可以继续等待，或者使用我们的简易版编辑器：</p>
+          <a href="./simple.html">使用简易版编辑器</a>
+        </div>
       </div>
     </div>
     <script>
@@ -93,6 +130,32 @@ gtag('config', 'G-7NZL3PZ0NK');
       if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.querySelector('.loading').classList.add('dark')
       }
+
+      // 添加加载计时器和超时处理
+      let seconds = 0;
+      const counterElement = document.getElementById('loading-counter');
+      const timeoutElement = document.getElementById('loading-timeout');
+      
+      const timer = setInterval(() => {
+        seconds++;
+        counterElement.textContent = seconds + '秒...';
+        
+        // 10秒后显示简易版编辑器选项
+        if (seconds >= 10) {
+          timeoutElement.classList.add('show');
+        }
+        
+        // 如果超过60秒仍未加载完成，自动跳转到简易版
+        if (seconds >= 60) {
+          clearInterval(timer);
+          window.location.href = './simple.html';
+        }
+      }, 1000);
+
+      // 当编辑器加载完成时，清除计时器
+      window.addEventListener('load', () => {
+        clearInterval(timer);
+      });
     </script>
     <script>
       window.MathJax = {
