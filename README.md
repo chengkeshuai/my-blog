@@ -120,6 +120,54 @@ description: "文章描述"
 - ✅ **友情链接**: 分类展示的底部链接区域
 - ✅ **代码高亮**: 自动语法高亮支持
 - ✅ **响应式设计**: 移动端适配
+- ✅ **在线Markdown编辑器**: 集成doocs/md微信Markdown编辑器
+
+## 📝 Markdown编辑器集成
+
+本项目集成了[doocs/md](https://github.com/doocs/md)微信Markdown编辑器，提供强大的在线编辑功能：
+
+- **访问路径**: `/md` 或 `/md/`
+- **功能特点**:
+  - 实时预览Markdown内容
+  - 支持微信公众号排版样式
+  - 支持深色/浅色主题切换
+  - 支持导出HTML/Markdown
+  - 支持多种格式（表格、代码块、列表等）
+  - 工具栏便捷操作
+
+### 集成步骤记录
+
+1. 克隆doocs/md仓库（使用Gitee镜像）:
+   ```bash
+   git clone https://gitee.com/doocs/md.git
+   ```
+
+2. 安装依赖并构建:
+   ```bash
+   cd md
+   npm install
+   npm run build
+   ```
+
+3. 复制构建产物到博客项目:
+   ```bash
+   # 将dist目录下的文件复制到public/md目录
+   Copy-Item -Recurse -Force dist/* ../public/md/
+   ```
+
+4. 修改资源路径:
+   - 将index.html中的绝对路径`/md/static/`改为相对路径`./static/`
+   - 创建default.html和404.html重定向文件
+
+5. 添加路由处理:
+   - 创建middleware.ts处理/md路径重定向
+   - 添加客户端页面路由组件处理重定向
+
+### 注意事项
+
+- 静态导出时，中间件无法使用，改为客户端重定向
+- 确保所有资源路径使用相对路径而非绝对路径
+- 在Next.js配置中设置`output: 'export'`和`images: { unoptimized: true }`
 
 ## 🌐 部署方案
 
