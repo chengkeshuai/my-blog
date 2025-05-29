@@ -38,9 +38,9 @@ const contentData = {
       "description": "查看所有文章"
     },
     {
-      "name": "联系我",
-      "href": "/contact",
-      "description": "联系方式和微信"
+      "name": "在线Markdown",
+      "href": "/md",
+      "description": "在线 Markdown 编辑器"
     },
     {
       "name": "出海实战课",
