@@ -30,15 +30,6 @@ export default async function Home() {
           {/* Social Links */}
           <div className="flex space-x-6">
             <a
-              href={siteConfig.social.email}
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="Email"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-              </svg>
-            </a>
-            <a
               href={siteConfig.links.x}
               className="text-gray-400 hover:text-white transition-colors"
               aria-label="X (Twitter)"
@@ -117,49 +108,55 @@ export default async function Home() {
 
       {/* Personal Card */}
       <section className="max-w-3xl mx-auto mb-16 flex justify-center">
-        <div className="max-w-md">
-          <div className="rounded-2xl p-6 text-center" style={{ background: 'linear-gradient(to bottom, #93c5fd 25%, #000000 25%)' }}>
-            <img 
-              src="/avatar.jpg" 
-              alt="坤晟的头像"
-              className="w-20 h-20 rounded-full mx-auto mb-2 object-cover border-2 border-gray-300"
-            />
-            <h3 className="text-xl font-bold text-left -mt-3 mb-1 text-white">{siteConfig.card.name}</h3>
-            <p className="text-gray-400 text-base mb-4 text-left">{siteConfig.card.username}</p>
+        <div className="max-w-md w-full">
+          <div className="rounded-lg overflow-hidden bg-gray-800 border border-gray-700 shadow-lg">
+            {/* 顶部背景条 */}
+            <div className="h-16 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
             
-            <div className="flex justify-center flex-wrap gap-2 mb-4">
-              {siteConfig.personal.tags.map((tag, index) => (
-                <span key={index} className={`px-2 py-1 text-base rounded-full ${
-                  index === 0 ? 'bg-yellow-100 text-yellow-800' :
-                  index === 1 ? 'bg-orange-100 text-orange-800' :
-                  index === 2 ? 'bg-green-100 text-green-800' :
-                  'bg-purple-100 text-purple-800'
-                }`}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-            
-            <p className="text-white text-lg mb-6">
-              {siteConfig.card.bio}
-            </p>
-            
-            <div className="flex justify-center gap-3">
-              {siteConfig.card.buttons.map((button, index) => (
-              <a
-                  key={index}
-                  href={button.href}
-                className="relative inline-block"
-                  target="_blank"
-                  rel="noopener noreferrer"
-              >
-                <div className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-lg p-0.5">
-                  <div className="bg-gray-900 rounded-lg px-4 py-2 text-white text-base whitespace-nowrap hover:bg-gray-800 transition-colors">
-                      {button.text}
+            {/* 卡片内容 */}
+            <div className="p-6 text-center -mt-8">
+              <img 
+                src="/avatar.jpg" 
+                alt="坤晟的头像"
+                className="w-20 h-20 rounded-full mx-auto object-cover border-2 border-gray-300"
+              />
+              <h3 className="text-xl font-bold mt-3 mb-1 text-white">{siteConfig.card.name}</h3>
+              <p className="text-gray-400 text-base mb-4">{siteConfig.card.username}</p>
+              
+              <div className="flex justify-center flex-wrap gap-2 mb-4">
+                {siteConfig.personal.tags.map((tag, index) => (
+                  <span key={index} className={`px-2 py-1 text-xs rounded-full ${
+                    index === 0 ? 'bg-yellow-100 text-yellow-800' :
+                    index === 1 ? 'bg-orange-100 text-orange-800' :
+                    index === 2 ? 'bg-green-100 text-green-800' :
+                    'bg-purple-100 text-purple-800'
+                  }`}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              
+              <p className="text-white text-base mb-6">
+                {siteConfig.card.bio}
+              </p>
+              
+              <div className="flex justify-center gap-3 flex-wrap">
+                {siteConfig.card.buttons.map((button, index) => (
+                <a
+                    key={index}
+                    href={button.href}
+                    className="inline-block"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  <div className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-lg p-0.5">
+                    <div className="bg-gray-900 rounded-lg px-4 py-2 text-white text-sm whitespace-nowrap hover:bg-gray-800 transition-colors">
+                        {button.text}
+                    </div>
                   </div>
-                </div>
-              </a>
-              ))}
+                </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

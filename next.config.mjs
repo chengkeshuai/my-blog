@@ -28,6 +28,12 @@ const nextConfig = {
   
   // 确保静态资源路径正确
   assetPrefix: '',
+  
+  // 设置以避免 _document 错误
+  optimizeFonts: false,
+  
+  // 使用 app 目录结构，不需要 _document
+  useFileSystemPublicRoutes: true,
 }
 
 const withMDX = createMDX({
