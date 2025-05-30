@@ -224,9 +224,9 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 
 ## 📧 联系方式
 
-- **邮箱**: chengkeshuai@gmail.com
+- **邮箱**: chengke2008@gmail.com
 - **GitHub**: [@chengkeshuai](https://github.com/chengkeshuai)
-- **X(Twitter)**: [@chengkeshuai](https://x.com/chengkeshuai)
+- **X(Twitter)**: [@chengkeshuai](https://x.com/chengks2008)
 
 ---
 
