@@ -180,7 +180,7 @@ export const siteConfig = {
   // 友情链接
   links: {
     github: "https://github.com/chengkeshuai",
-    x: "https://x.com/chengkeshuai", 
+    x: "https://x.com/chengks2008", 
     buymeacoffee: "https://www.buymeacoffee.com/chengkeshuai",
     blog: [
       { name: "J实验室", href: "https://example.com" },

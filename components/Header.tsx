@@ -3,10 +3,12 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { siteConfig } from '../config/site'
+import SearchDialog from '../src/components/SearchDialog'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showQrcode, setShowQrcode] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 w-full border-b" style={{ backgroundColor: '#272934', borderColor: '#2a2a2a' }}>
@@ -37,7 +39,10 @@ export default function Header() {
         {/* Right side - Icons */}
         <div className="hidden md:flex items-center space-x-2 px-4 py-2 rounded-lg" style={{ backgroundColor: '#1a1a1a' }}>
           {/* Search */}
-          <button className="p-2 text-gray-400 hover:text-white transition-colors">
+          <button 
+            className="p-2 text-gray-400 hover:text-white transition-colors"
+            onClick={() => setShowSearch(true)}
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -132,9 +137,22 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+            <button
+              className="flex items-center space-x-2 text-lg"
+              style={{ color: '#99d8eb' }}
+              onClick={() => setShowSearch(true)}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <span>搜索</span>
+            </button>
           </nav>
         </div>
       )}
+
+      {/* Search Dialog */}
+      <SearchDialog isOpen={showSearch} onClose={() => setShowSearch(false)} />
     </header>
   )
 } 
